@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>معرض أعمالي - أحدث مشاريع تطوير الويب | AhmedDev</title>
+    <meta name="description" content="استعرض مجموعة من مشاريعي في تطوير الويب، من صفحات الهبوط الاحترافية إلى تطبيقات الويب المتكاملة.">
+    <link rel="canonical" href="https://ahmeddev.com/projects.html">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-white text-gray-900 selection:bg-indigo-500 selection:text-white">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <header id="main-header" class="fixed w-full z-50 bg-white/70 backdrop-blur-xl shadow-lg py-4 text-slate-900 border-b border-white/20">
+        <nav class="container mx-auto px-6 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-3">
+                <img src="aaa.png" alt="أحمد" class="w-10 h-10 rounded-full object-cover border-2 border-slate-900">
+                <div class="text-2xl font-bold">AhmedDev</div>
+            </a>
+            
+            <!-- Mobile Menu Button -->
+            <button id="menu-btn" class="md:hidden block focus:outline-none text-inherit">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+
+            <ul id="menu" class="hidden md:flex space-x-reverse space-x-8 font-medium items-center">
+                <li><a href="index.html" class="nav-link">الرئيسية</a></li>
+                <li><a href="about.html" class="nav-link">عني</a></li>
+                <li><a href="projects.html" class="nav-link active">مشاريعي</a></li>
+                <li><a href="contact.html" class="bg-indigo-600 text-white px-5 py-2 rounded-lg hover:bg-indigo-700 transition">تواصل معي</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="pt-32 pb-24">
+        <section id="projects" class="container mx-auto px-6" data-aos="fade-up">
+            <h2 class="text-4xl font-black text-center mb-12">أعمالي الأخيرة</h2>
+            <div id="projects-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Apple Store Egypt Project -->
+                <div class="project-card tilt-card relative min-h-[400px] rounded-3xl overflow-hidden shadow-2xl group cursor-zoom-in lightbox-trigger border border-white/10 bg-slate-900" data-aos="fade-up" data-aos-delay="100">
+                    <picture class="absolute inset-0 w-full h-full">
+                        <img src="mahr.jpg" alt="Apple Store Egypt" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity duration-700" loading="lazy">
+                    </picture>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent flex flex-col justify-end p-8">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="font-bold text-2xl text-white">Apple Store Egypt</h3>
+                            <span class="bg-indigo-600 text-white text-[10px] px-3 py-1 rounded-full uppercase tracking-widest font-bold shadow-lg">Featured</span>
+                        </div>
+                        <p class="text-gray-300 text-sm mb-6 leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500">تصميم وتنفيذ صفحة هبوط احترافية تحاكي متجر Apple، مع التركيز على الواجهات الجذابة والتجاوب الكامل.</p>
+                        <a href="https://nexorastudiodevv-ctrl.github.io/apple-store-egypt/" target="_blank" class="inline-block w-full text-center bg-white/10 backdrop-blur-md border border-white/20 text-white py-3 rounded-xl font-bold hover:bg-white hover:text-indigo-900 transition-all duration-300">معاينة المشروع مباشرة</a>
+                    </div>
+                </div>
+                <!-- Nexora Studio Project -->
+                <div class="project-card tilt-card relative min-h-[400px] rounded-3xl overflow-hidden shadow-2xl group cursor-zoom-in lightbox-trigger border border-white/10 bg-slate-900" data-aos="fade-up" data-aos-delay="200">
+                    <picture class="absolute inset-0 w-full h-full">
+                        <img src="0774.jpg" alt="Nexora Studio" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity duration-700" loading="lazy">
+                    </picture>
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent flex flex-col justify-end p-8">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="font-bold text-2xl text-white">Nexora Studio</h3>
+                            <span class="bg-purple-600 text-white text-[10px] px-3 py-1 rounded-full uppercase tracking-widest font-bold shadow-lg">Innovation</span>
+                        </div>
+                        <p class="text-gray-300 text-sm mb-6 leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500">نحو مستقبل رقمي واعد؛ منصة متكاملة لاستعراض الحلول التقنية المبتكرة والخدمات الرقمية العصرية.</p>
+                        <a href="https://nexorastudiodevv-ctrl.github.io/-Nexora-Studio/" target="_blank" class="inline-block w-full text-center bg-white/10 backdrop-blur-md border border-white/20 text-white py-3 rounded-xl font-bold hover:bg-white hover:text-indigo-900 transition-all duration-300">استكشف المستقبل</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-12 bg-gray-900 text-white text-center">
+        <p>© 2026 AhmedDev.com | جميع الحقوق محفوظة</p>
+    </footer>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="fixed inset-0 z-[100] bg-black/90 hidden items-center justify-center p-4 backdrop-blur-sm cursor-zoom-out">
+        <button id="close-lightbox" class="absolute top-6 left-6 text-white hover:text-indigo-400 transition">
+            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+        <img id="lightbox-img" src="" alt="Preview" class="max-w-full max-h-full rounded-lg shadow-2xl transform scale-95 transition-transform duration-300">
+    </div>
+
+    <!-- Scroll to Top Button -->
+    <button id="scroll-to-top" class="fixed bottom-8 right-8 z-50 w-14 h-14 flex items-center justify-center bg-slate-900 text-white rounded-full shadow-2xl opacity-0 translate-y-10 pointer-events-none transition-all duration-500">
+        <svg class="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 100 100">
+            <circle class="text-slate-700/30" stroke-width="6" stroke="currentColor" fill="transparent" r="42" cx="50" cy="50" />
+            <circle id="scroll-progress-circle" class="text-indigo-500" stroke-width="6" stroke-dasharray="264" stroke-dashoffset="264" stroke-linecap="round" stroke="currentColor" fill="transparent" r="42" cx="50" cy="50" />
+        </svg>
+        <svg class="w-6 h-6 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18"></path></svg>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>

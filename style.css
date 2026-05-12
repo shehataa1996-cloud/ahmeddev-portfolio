@@ -1,0 +1,283 @@
+/* --- Base & Typography --- */
+body {
+    font-family: 'Tajawal', sans-serif;
+}
+
+/* Tech Grid Background */
+.bg-grid-slate-900\/\[0\.2\] {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(15 23 42 / 0.2)'%3E%3Cpath d='M0 .5H31.5V32'/%3E%3C/svg%3E");
+}
+
+/* Smooth Scrollbar */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #020617; }
+::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 5px; }
+::-webkit-scrollbar-thumb:hover { background: #4f46e5; }
+
+
+/* --- Animations Keyframes --- */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+@keyframes codeScan {
+    0% { top: -10%; opacity: 0; } /* يبدأ من أعلى قليلاً خارج الرؤية */
+    10% { top: 0%; opacity: 1; } /* يدخل من الأعلى ويصبح مرئياً */
+    90% { top: 100%; opacity: 1; } /* يمسح الصورة حتى الأسفل */
+    100% { top: 110%; opacity: 0; } /* يخرج من الأسفل ويختفي */
+}
+
+.animate-code-scan {
+    animation: codeScan 4s linear infinite; /* تحريك مستمر لمدة 4 ثوانٍ */
+}
+
+@keyframes blob {
+    0% { transform: translate(0px, 0px) scale(1); }
+    33% { transform: translate(30px, -50px) scale(1.1); }
+    66% { transform: translate(-20px, 20px) scale(0.9); }
+    100% { transform: translate(0px, 0px) scale(1); }
+}
+
+.animate-blob {
+    animation: blob 7s infinite ease-in-out;
+}
+
+.animation-delay-2000 {
+    animation-delay: 2s;
+}
+
+@keyframes button-pulse {
+    0% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.5); }
+    70% { box-shadow: 0 0 0 15px rgba(79, 70, 229, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0); }
+}
+
+/* نبض مخصص لأيقونة الوتساب باللون الأخضر المميز */
+@keyframes whatsapp-pulse {
+    0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.5); }
+    70% { box-shadow: 0 0 0 15px rgba(34, 197, 94, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+}
+
+@keyframes backgroundPan {
+    0% { background-position: 0% 0%; }
+    50% { background-position: 100% 100%; }
+    100% { background-position: 0% 0%; }
+}
+
+
+
+/* --- Component Styles --- */
+
+.text-gradient {
+    background: linear-gradient(to right, #818cf8, #c084fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+.whatsapp-glow {
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    animation: float 4s ease-in-out infinite, whatsapp-pulse 2s infinite;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.15));
+}
+
+/* تصميم التلميح (Tooltip) */
+.whatsapp-glow::after {
+    content: "تواصل معنا";
+    position: absolute;
+    right: 125%; /* يظهر إلى يسار الأيقونة */
+    top: 50%;
+    transform: translateY(-50%) translateX(10px);
+    background: #1e293b; /* لون داكن احترافي Slate-900 */
+    color: white;
+    padding: 8px 14px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.whatsapp-glow:hover, .whatsapp-glow.show-tooltip {
+    filter: drop-shadow(0 10px 25px rgba(34, 197, 94, 0.4));
+    transform: scale(1.15) rotate(8deg);
+}
+
+/* إظهار التلميح عند الحوم (للكمبيوتر) أو الكلاس (للهواتف) */
+.whatsapp-glow:hover::after,
+.whatsapp-glow.show-tooltip::after {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-50%) translateX(0);
+}
+
+/* تعديل مكان التلميح للهواتف ليظهر فوق الزر بدلاً من جانبه */
+@media (max-width: 768px) {
+    .whatsapp-glow::after {
+        right: auto;
+        left: 50%;
+        top: auto;
+        bottom: 130%; /* يرتفع فوق الأيقونة */
+        transform: translateX(-50%) translateY(10px);
+    }
+
+    /* منع ظهور التلميح بشكل دائم عند النقر على الهاتف (Hover state fix) */
+    .whatsapp-glow:hover::after {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    /* التحكم في الظهور عبر JavaScript فقط في الهواتف */
+    .whatsapp-glow.show-tooltip::after {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+/* تحسين مظهر التدرج اللوني للنصوص */
+.text-gradient {
+    background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* شكل خلفية الصفحة */
+body {
+    background-color: #f8fafc; /* Tailwind's slate-50 */
+    background-image:
+        radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.05) 0, transparent 50%), /* Top-left Indigo */
+        radial-gradient(at 100% 100%, rgba(168, 85, 247, 0.05) 0, transparent 50%), /* Bottom-right Purple */
+        radial-gradient(at 50% 0%, rgba(52, 211, 153, 0.03) 0, transparent 50%); /* Top-center Emerald */
+    background-attachment: fixed;
+    background-size: 200% 200%; /* لتوفير مساحة للحركة */
+    animation: backgroundPan 30s linear infinite; /* تطبيق الحركة */
+}
+
+/* Swiper Pagination Styling */
+.swiper-pagination-bullet {
+    background: #6366f1;
+    width: 10px;
+    height: 10px;
+    opacity: 0.3;
+}
+.swiper-pagination-bullet-active {
+    opacity: 1;
+    width: 30px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+/* تأخير بسيط لتحسين تجربة التركيز في النموذج */
+input, textarea {
+    caret-color: #6366f1;
+}
+
+.animate-fade-in-up { animation: fadeInUp 0.4s ease-out; }
+
+/* --- Professional Navigation Links --- */
+.nav-link {
+    position: relative;
+    padding: 0.5rem 0;
+    transition: all 0.3s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(to right, #6366f1, #a855f7);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+
+.nav-link:hover::after, 
+.nav-link.active::after {
+    width: 100%;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: #6366f1 !important;
+}
+
+/* --- 3D Tilt Effect Utilities --- */
+.tilt-card {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    transition: transform 0.15s ease-out, box-shadow 0.15s ease-out;
+}
+
+.tilt-card > * {
+    /* تحديد عمق الطبقة الأولى (الحاوية السوداء والوصف) */
+    transform: translateZ(40px);
+    transform-style: preserve-3d;
+}
+
+/* جعل العنوان يبرز أكثر قليلاً */
+.tilt-card h3 {
+    transform: translateZ(60px);
+}
+
+/* جعل الزر يبرز لأقصى درجة لخلق تأثير Pop-out قوي */
+.tilt-card a {
+    transform: translateZ(90px) !important;
+    /* إضافة ظل داكن خلف الزر لتعزيز إيحاء المسافة والطفو */
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+    transition: all 0.3s ease;
+}
+
+/* --- Blog Section Styles --- */
+.blog-badge {
+    background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+.blog-card-overlay {
+    background: linear-gradient(to top, rgba(15, 23, 42, 0.9) 0%, transparent 100%);
+}
+
+.read-time {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #94a3b8;
+    font-size: 12px;
+}
+
+/* تأثير التوهج للبطاقات المختارة */
+.featured-blog {
+    border: 2px solid transparent;
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    background-image: linear-gradient(#f8fafc, #f8fafc), linear-gradient(135deg, #6366f1, #a855f7);
+}

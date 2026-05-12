@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أحمد - مطور ويب خبير في بناء تطبيقات الويب | AhmedDev</title>
+    <meta name="description" content="موقع AhmedDev - مطور ويب متخصص في بناء واجهات مستخدم احترافية وتطبيقات ويب سريعة باستخدام أحدث التقنيات مثل React و Tailwind CSS.">
+    <meta name="keywords" content="مطور ويب, برمجة مواقع, تصميم مواقع, AhmedDev, مطور ويب مصري, React, Tailwind CSS">
+    <link rel="canonical" href="https://ahmeddev.com/index.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ahmeddev.com/">
+    <meta property="og:title" content="أحمد - مطور ويب خبير | AhmedDev">
+    <meta property="og:description" content="أبتكر تجارب رقمية استثنائية عبر حلول برمجية متطورة. استعرض مشاريعي الآن.">
+    <meta property="og:image" content="https://ahmeddev.com/aaa.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://ahmeddev.com/">
+    <meta property="twitter:title" content="أحمد - مطور ويب خبير | AhmedDev">
+    <meta property="twitter:description" content="أبتكر تجارب رقمية استثنائية عبر حلول برمجية متطورة. استعرض مشاريعي الآن.">
+    <meta property="twitter:image" content="https://ahmeddev.com/aaa.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "أحمد",
+      "jobTitle": "Web Developer",
+      "url": "https://ahmeddev.com",
+      "image": "https://ahmeddev.com/aaa.png",
+      "description": "مطور ويب متخصص في بناء واجهات مستخدم احترافية وتطبيقات ويب سريعة باستخدام أحدث التقنيات.",
+      "sameAs": [
+        "https://github.com/YOUR_USERNAME"
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "url": "https://ahmeddev.com/",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://ahmeddev.com/projects.html?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-50 text-gray-900 overflow-x-hidden selection:bg-indigo-500 selection:text-white">
+
+    <!-- Header -->
+    <header id="main-header" class="fixed w-full z-50 transition-all duration-300 py-4 text-white is-transparent">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#home" class="flex items-center gap-3 group">
+                <img src="aaa.png" alt="أحمد" class="w-10 h-10 rounded-full object-cover border-2 border-slate-900 transition group-hover:ring-4 group-hover:ring-slate-100">
+                <div class="text-2xl font-bold">AhmedDev</div>
+            </a>
+            
+            <!-- Mobile Menu Button -->
+            <button id="menu-btn" class="md:hidden block focus:outline-none text-inherit">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+
+            <ul id="menu" class="hidden md:flex space-x-reverse space-x-8 font-medium items-center">
+                <li><a href="index.html" class="nav-link active">الرئيسية</a></li>
+                <li><a href="about.html" class="nav-link">عني</a></li>
+                <li><a href="projects.html" class="nav-link">مشاريعي</a></li>
+                <li><a href="#blog" class="nav-link">المدونة</a></li>
+                <li class="flex items-center gap-4">
+                    <a href="https://github.com/YOUR_USERNAME" target="_blank" class="text-inherit opacity-70 hover:opacity-100 hover:text-indigo-400 transition-all nav-social-icon" title="GitHub" aria-label="GitHub Profile">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path>
+                        </svg>
+                    </a>
+                    <a href="#" target="_blank" class="text-inherit opacity-70 hover:opacity-100 hover:text-green-500 transition-all whatsapp-glow nav-social-icon" title="WhatsApp" aria-label="Contact on WhatsApp">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.414 0 .004 5.412.001 12.048a11.82 11.82 0 001.576 5.93L0 24l6.101-1.6c1.873 1.022 3.991 1.562 6.143 1.563h.005c6.635 0 12.046-5.412 12.049-12.049A11.85 11.85 0 0020.464 3.488z"/>
+                        </svg>
+                    </a>
+                </li>
+                <li><a href="contact.html" class="bg-indigo-600 text-white px-5 py-2 rounded-lg hover:bg-indigo-700 transition shadow-lg shadow-indigo-200/50 animate-button-pulse">تواصل معي</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="bg-slate-950 min-h-screen flex items-center pt-24 pb-12 relative overflow-hidden">
+            <!-- Technical Background Element -->
+            <div class="absolute inset-0 bg-grid-slate-900/[0.4] bg-[size:40px_40px] pointer-events-none"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-slate-950 via-transparent to-slate-950 pointer-events-none"></div>
+            
+            <!-- Decorative Blobs -->
+            <div class="absolute top-1/4 -right-20 w-96 h-96 bg-indigo-600/10 blur-[120px] rounded-full animate-blob"></div>
+            <div class="absolute bottom-1/4 -left-20 w-80 h-80 bg-purple-600/10 blur-[100px] rounded-full animate-blob animation-delay-2000"></div>
+
+            <div class="container mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+                <div class="text-white space-y-6 overflow-hidden">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-indigo-500/30 bg-indigo-500/10 text-indigo-400 text-sm font-bold mb-2 shadow-inner" data-aos="fade-down">
+                        <span class="relative flex h-2 w-2">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
+                        </span>
+                        متوفر للعمل المستقل &bull; Freelance
+                    </div>
+                    <h1 class="text-6xl md:text-7xl lg:text-8xl font-black leading-[1.1] tracking-tight" data-aos="fade-up" data-aos-delay="100">
+                        أحمد: مطور ويب يبتكر <br>
+                        <span class="text-gradient">حلولاً تقنية ذكية</span>
+                    </h1>
+                    <p class="text-lg text-slate-300 max-w-lg leading-relaxed font-light" data-aos="fade-up" data-aos-delay="200">أبتكر تجارب رقمية استثنائية عبر حلول برمجية متطورة؛ متخصص في تطوير تطبيقات ويب تمتاز بالسرعة الفائقة، الأمان المطلق، والتوافق التام مع كافة الأجهزة.</p>
+                    <div class="flex flex-wrap gap-4 pt-4">
+                    <div data-aos="zoom-in" data-aos-delay="400">
+                        <a href="projects.html" class="group relative px-8 py-4 bg-indigo-600 text-white rounded-2xl font-bold overflow-hidden transition-all duration-300 hover:scale-105 active:scale-95 shadow-2xl shadow-indigo-500/40 flex items-center justify-center gap-3">
+                            <span class="absolute inset-0 bg-gradient-to-r from-indigo-600 to-violet-600 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></span>
+                            <span class="relative z-10">استعراض المشاريع</span>
+                            <i class="fas fa-arrow-left relative z-10 group-hover:-translate-x-1 transition-all duration-300"></i>
+                        </a>
+                    </div>
+                    <div data-aos="zoom-in" data-aos-delay="500">
+                        <a href="contact.html" class="px-8 py-4 bg-slate-900/50 backdrop-blur-md text-white border border-slate-800 rounded-2xl font-bold hover:bg-slate-800 transition-all shadow-lg block">تحدث معي</a>
+                    </div>
+                    </div>
+                </div>
+                <div class="block">
+                    <div class="relative w-full max-w-sm mx-auto" data-aos="fade-right">
+                        <!-- Glow Background Effect -->
+                        <div class="absolute -inset-4 bg-gradient-to-tr from-indigo-500 to-purple-600 rounded-[2.5rem] blur-2xl opacity-20 animate-pulse"></div>
+                        
+                        <!-- Browser Window Container -->
+                        <div class="relative bg-slate-900 rounded-[2rem] shadow-2xl border border-white/10 overflow-hidden group animate-float">
+                            <!-- Browser Header Toolbar -->
+                            <div class="bg-slate-800/50 px-5 py-4 border-b border-white/5 flex items-center">
+                                <div class="flex gap-1.5">
+                                    <div class="w-3 h-3 rounded-full bg-[#ff5f56]"></div> <!-- Red dot -->
+                                    <div class="w-3 h-3 rounded-full bg-[#ffbd2e]"></div> <!-- Yellow dot -->
+                                    <div class="w-3 h-3 rounded-full bg-[#27c93f]"></div> <!-- Green dot -->
+                                </div>
+                                <div class="mx-auto bg-slate-950/40 text-[10px] text-slate-500 px-6 py-1 rounded-lg border border-white/5 font-mono">ahmed_developer.js</div>
+                            </div>
+                            
+                            <!-- Browser Body (The Image) -->
+                            <picture>
+                                <img src="aaa.png" alt="أحمد - مطور ويب خبير" class="w-full h-80 md:h-[420px] object-cover transition-transform duration-700 group-hover:scale-105" width="450" height="450">
+                            </picture>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+        <!-- Latest Works Preview Section -->
+        <section id="latest-works-preview" class="py-24 bg-white relative overflow-hidden">
+            <div class="container mx-auto px-6">
+                <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                    <div data-aos="fade-left">
+                        <h2 class="text-4xl font-black text-slate-900 mb-4">أعمالي <span class="text-gradient">الأخيرة</span></h2>
+                        <p class="text-slate-500 max-w-xl">نظرة سريعة على أحدث الحلول الرقمية والمشاريع التي قمت بتنفيذها مؤخراً.</p>
+                    </div>
+                    <a href="projects.html" class="text-indigo-600 font-bold hover:text-indigo-700 transition-colors flex items-center gap-2" data-aos="fade-right">عرض كافة المشاريع <i class="fas fa-arrow-left"></i></a>
+                </div>
+                
+                <div id="home-projects-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Apple Store Egypt Project -->
+                    <div class="project-card tilt-card relative min-h-[400px] rounded-3xl overflow-hidden shadow-xl group border border-slate-100 bg-slate-900" data-aos="fade-up" data-aos-delay="100">
+                        <img src="mahr.jpg" alt="Apple Store Egypt" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent flex flex-col justify-end p-8">
+                            <div class="flex justify-between items-start mb-3">
+                                <h3 class="font-bold text-2xl text-white">Apple Store Egypt</h3>
+                                <span class="bg-indigo-600 text-white text-[10px] px-3 py-1 rounded-full uppercase font-bold">Featured</span>
+                            </div>
+                            <p class="text-gray-300 text-sm mb-6 leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 line-clamp-3">تصميم وتنفيذ صفحة هبوط احترافية تحاكي متجر Apple، مع التركيز على الواجهات الجذابة والتجاوب الكامل.</p>
+                            <a href="https://nexorastudiodevv-ctrl.github.io/apple-store-egypt/" target="_blank" class="inline-block w-full text-center bg-white/10 backdrop-blur-md border border-white/20 text-white py-3 rounded-xl font-bold hover:bg-white hover:text-indigo-900 transition-all">معاينة المشروع</a>
+                        </div>
+                    </div>
+                    <!-- Nexora Studio Project -->
+                    <div class="project-card tilt-card relative min-h-[400px] rounded-3xl overflow-hidden shadow-xl group border border-slate-100 bg-slate-900" data-aos="fade-up" data-aos-delay="200">
+                        <img src="0774.jpg" alt="Nexora Studio" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent flex flex-col justify-end p-8">
+                            <div class="flex justify-between items-start mb-3">
+                                <h3 class="font-bold text-2xl text-white">Nexora Studio</h3>
+                                <span class="bg-purple-600 text-white text-[10px] px-3 py-1 rounded-full uppercase font-bold">Innovation</span>
+                            </div>
+                            <p class="text-gray-300 text-sm mb-6 leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 line-clamp-3">نحو مستقبل رقمي واعد؛ منصة متكاملة لاستعراض الحلول التقنية المبتكرة والخدمات الرقمية العصرية.</p>
+                            <a href="https://nexorastudiodevv-ctrl.github.io/-Nexora-Studio/" target="_blank" class="inline-block w-full text-center bg-white/10 backdrop-blur-md border border-white/20 text-white py-3 rounded-xl font-bold hover:bg-white hover:text-indigo-900 transition-all">معاينة المشروع</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="py-24 bg-slate-50 overflow-hidden">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <h2 class="text-4xl font-black text-slate-900 mb-4">قالوا عني</h2>
+                    <p class="text-slate-500">ثقة العملاء هي الوقود الذي يحرك شغفي للإبداع</p>
+                </div>
+
+                <!-- Swiper Slider -->
+                <div class="swiper testimonials-slider pb-12" data-aos="fade-up" data-aos-delay="200">
+                    <div class="swiper-wrapper">
+                        <!-- Testimonial 1 -->
+                        <div class="swiper-slide h-auto">
+                            <div class="bg-white p-8 rounded-[2rem] shadow-xl shadow-slate-200/50 border border-slate-100 h-full flex flex-col justify-between transition-transform hover:-translate-y-2 duration-300">
+                                <div class="mb-6">
+                                    <div class="flex text-amber-400 mb-4 text-sm"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                                    <p class="text-slate-600 leading-relaxed italic">"تعامل راقي ودقة متناهية في المواعيد. أحمد استطاع تحويل فكرتي إلى موقع يفوق توقعاتي من حيث السرعة والجمال."</p>
+                                </div>
+                                <div class="flex items-center gap-4 border-t border-slate-50 pt-6">
+                                    <div class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center text-indigo-600 font-bold">م.س</div>
+                                    <div>
+                                        <h4 class="font-bold text-slate-900">محمد سامي</h4>
+                                        <p class="text-xs text-slate-400">مدير تقني - شركة Nexora</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Testimonial 2 -->
+                        <div class="swiper-slide h-auto">
+                            <div class="bg-white p-8 rounded-[2rem] shadow-xl shadow-slate-200/50 border border-slate-100 h-full flex flex-col justify-between transition-transform hover:-translate-y-2 duration-300">
+                                <div class="mb-6">
+                                    <div class="flex text-amber-400 mb-4 text-sm"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                                    <p class="text-slate-600 leading-relaxed italic">"أفضل مطور ويب تعاملت معه. يهتم بأدق التفاصيل البرمجية ويقدم حلولاً مبتكرة للمشاكل التقنية المعقدة."</p>
+                                </div>
+                                <div class="flex items-center gap-4 border-t border-slate-50 pt-6">
+                                    <div class="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-600 font-bold">س.ع</div>
+                                    <div>
+                                        <h4 class="font-bold text-slate-900">سارة علي</h4>
+                                        <p class="text-xs text-slate-400">رائدة أعمال</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Pagination -->
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tech News Section -->
+        <section id="tech-news" class="py-24 bg-white relative overflow-hidden">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <div class="flex flex-col md:flex-row items-center justify-center gap-4 mb-4">
+                        <h2 class="text-4xl font-black text-slate-900">أحدث أخبار التكنولوجيا</h2>
+                        <button id="view-all-news" class="hidden px-4 py-1.5 text-sm font-bold text-indigo-600 bg-indigo-50 rounded-full hover:bg-indigo-100 transition-all border border-indigo-100 active:scale-95 shadow-sm">عرض الكل</button>
+                    </div>
+                    <div class="w-20 h-1.5 bg-indigo-500 mx-auto rounded-full mb-4"></div>
+                    <p class="text-slate-500">نتابع لكم أهم التطورات التقنية من كبرى المنصات العالمية الموثوقة</p>
+                </div>
+
+                <div id="news-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- News 1 -->
+                    <article class="group bg-slate-50 rounded-[2.5rem] border border-slate-100 overflow-hidden hover:shadow-2xl hover:shadow-indigo-500/10 transition-all duration-500" data-aos="fade-up" data-aos-delay="100">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="Artificial Intelligence" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            <button data-source="البوابة العربية للأخبار التقنية" class="source-tag-btn absolute top-4 right-4 bg-blue-50/90 backdrop-blur-sm px-3 py-1 rounded-full text-[10px] font-bold text-blue-600 border border-blue-100 transition-all hover:scale-105 active:scale-95 z-10">البوابة العربية للأخبار التقنية</button>
+                        </div>
+                        <div class="p-8">
+                            <div class="flex items-center gap-2 text-xs text-slate-400 mb-4 font-bold">
+                                <span>البوابة العربية للأخبار التقنية</span>
+                                <span class="w-1 h-1 bg-slate-300 rounded-full"></span>
+                                <span>مايو 2024</span>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3 group-hover:text-indigo-600 transition-colors leading-tight">آفاق جديدة للذكاء الاصطناعي في المنطقة العربية</h3>
+                            <p class="text-slate-500 text-sm leading-relaxed mb-6 font-light">تقرير حول كيفية تبني المؤسسات العربية لتقنيات الذكاء الاصطناعي لتعزيز الإنتاجية المحلية والابتكار الرقمي.</p>
+                            <a href="https://aitnews.com" target="_blank" class="text-indigo-600 font-bold text-sm flex items-center gap-2 group/link">
+                                اقرأ المزيد
+                                <i class="fas fa-arrow-left group-hover/link:-translate-x-1 transition-transform"></i>
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- News 2 -->
+                    <article class="group bg-slate-50 rounded-[2.5rem] border border-slate-100 overflow-hidden hover:shadow-2xl hover:shadow-indigo-500/10 transition-all duration-500" data-aos="fade-up" data-aos-delay="200">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800" alt="Cyber Security" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            <button data-source="سكاي نيوز عربية" class="source-tag-btn absolute top-4 right-4 bg-red-50/90 backdrop-blur-sm px-3 py-1 rounded-full text-[10px] font-bold text-red-600 border border-red-100 transition-all hover:scale-105 active:scale-95 z-10">سكاي نيوز عربية</button>
+                        </div>
+                        <div class="p-8">
+                            <div class="flex items-center gap-2 text-xs text-slate-400 mb-4 font-bold">
+                                <span>سكاي نيوز عربية</span>
+                                <span class="w-1 h-1 bg-slate-300 rounded-full"></span>
+                                <span>مايو 2024</span>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3 group-hover:text-indigo-600 transition-colors leading-tight">تطورات الأمن السيبراني في الشرق الأوسط</h3>
+                            <p class="text-slate-500 text-sm leading-relaxed mb-6 font-light">الخبراء يناقشون آليات حماية البنية التحتية الرقمية من التهديدات السيبرانية المتزايدة في ظل التحول الرقمي السريع.</p>
+                            <a href="https://www.skynewsarabia.com/technology" target="_blank" class="text-indigo-600 font-bold text-sm flex items-center gap-2 group/link">
+                                اقرأ المزيد
+                                <i class="fas fa-arrow-left group-hover/link:-translate-x-1 transition-transform"></i>
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- News 3 -->
+                    <article class="group bg-slate-50 rounded-[2.5rem] border border-slate-100 overflow-hidden hover:shadow-2xl hover:shadow-indigo-500/10 transition-all duration-500" data-aos="fade-up" data-aos-delay="300">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?auto=format&fit=crop&q=80&w=800" alt="Web Development" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            <button data-source="العربية نت" class="source-tag-btn absolute top-4 right-4 bg-emerald-50/90 backdrop-blur-sm px-3 py-1 rounded-full text-[10px] font-bold text-emerald-600 border border-emerald-100 transition-all hover:scale-105 active:scale-95 z-10">العربية نت</button>
+                        </div>
+                        <div class="p-8">
+                            <div class="flex items-center gap-2 text-xs text-slate-400 mb-4 font-bold">
+                                <span>العربية نت</span>
+                                <span class="w-1 h-1 bg-slate-300 rounded-full"></span>
+                                <span>أبريل 2024</span>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3 group-hover:text-indigo-600 transition-colors leading-tight">نمو قطاع التكنولوجيا المالية في الخليج</h3>
+                            <p class="text-slate-500 text-sm leading-relaxed mb-6 font-light">كيف تساهم التقنيات المالية الحديثة في تغيير نمط المعاملات اليومية وتعزيز الاقتصاد الرقمي في دول التعاون الخليجي.</p>
+                            <a href="https://www.alarabiya.net/technology" target="_blank" class="text-indigo-600 font-bold text-sm flex items-center gap-2 group/link">
+                                اقرأ المزيد
+                                <i class="fas fa-arrow-left group-hover/link:-translate-x-1 transition-transform"></i>
+                            </a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+            <!-- Blog Section -->
+            <section id="blog" class="py-24 bg-slate-50 relative overflow-hidden">
+                <div class="container mx-auto px-6">
+                    <div class="text-center mb-16" data-aos="fade-up">
+                        <h2 class="text-4xl font-black text-slate-900 mb-4">مدونتي <span class="text-gradient">الخاصة</span></h2>
+                        <div class="w-20 h-1.5 bg-indigo-500 mx-auto rounded-full mb-4"></div>
+                        <p class="text-slate-500">مقالات تقنية ودروس برمجية أشارككم فيها خبراتي وتجاربي الشخصية.</p>
+                    </div>
+                    
+                    <!-- هذا العنصر ضروري لكي يتم حقن المقالات برمجياً -->
+                    <div id="blog-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+                </div>
+            </section>
+
+        <!-- Summary Sections (Optional previews can go here) -->
+        <section class="py-20 bg-white text-center">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold mb-6">جاهز لبدء مشروعك؟</h2>
+                <p class="text-gray-600 mb-8">استكشف أعمالي السابقة أو تواصل معي مباشرة لمناقشة فكرتك.</p>
+                <div class="flex justify-center gap-4">
+                    <a href="projects.html" class="px-8 py-3 bg-indigo-600 text-white rounded-xl font-bold hover:bg-indigo-700 transition">مشاهدة المشاريع</a>
+                    <a href="about.html" class="px-8 py-3 border-2 border-slate-900 rounded-xl font-bold hover:bg-slate-900 hover:text-white transition">تعرف عليّ</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-12 bg-slate-950 text-white text-center border-t border-white/5">
+        <div class="container mx-auto px-6">
+            <p class="text-slate-400 mb-4">© 2026 AhmedDev.com | جميع الحقوق محفوظة</p>
+        </div>
+    </footer>
+
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="fixed inset-0 z-[100] bg-black/90 hidden items-center justify-center p-4 backdrop-blur-sm cursor-zoom-out">
+        <button id="close-lightbox" class="absolute top-6 left-6 text-white hover:text-indigo-400 transition">
+            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+        <img id="lightbox-img" src="" alt="Preview" class="max-w-full max-h-full rounded-lg shadow-2xl transform scale-95 transition-transform duration-300">
+    </div>
+
+    <!-- Scroll to Top Button -->
+    <button id="scroll-to-top" class="fixed bottom-8 right-8 z-50 w-14 h-14 flex items-center justify-center bg-slate-900/80 backdrop-blur-md text-white rounded-full shadow-[0_0_20px_rgba(0,0,0,0.3)] opacity-0 translate-y-10 pointer-events-none transition-all duration-500 hover:shadow-indigo-500/40 hover:-translate-y-2 active:scale-90 group" aria-label="العودة للأعلى">
+        <!-- Progress Circle -->
+        <svg class="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 100 100">
+            <circle class="text-slate-700/30" stroke-width="6" stroke="currentColor" fill="transparent" r="42" cx="50" cy="50" />
+            <circle id="scroll-progress-circle" class="text-indigo-500 transition-all duration-150" stroke-width="6" stroke-dasharray="264" stroke-dashoffset="264" stroke-linecap="round" stroke="currentColor" fill="transparent" r="42" cx="50" cy="50" />
+        </svg>
+        
+        <div class="relative z-10 transition-transform duration-300 group-hover:-translate-y-1">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+            </svg>
+        </div>
+    </button>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>من أنا؟ | أحمد مطور ويب - خبرة في بناء الحلول البرمجية</title>
+    <meta name="description" content="تعرف على رحلتي في عالم البرمجة، مهاراتي التقنية، والمشاريع التي قمت بتنفيذها. شغوف ببناء ويب أسرع وأفضل.">
+    <link rel="canonical" href="https://ahmeddev.com/about.html">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-slate-50 text-gray-900 selection:bg-indigo-500 selection:text-white">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <header id="main-header" class="fixed w-full z-50 bg-white/70 backdrop-blur-xl shadow-lg py-4 text-slate-900 border-b border-white/20">
+        <nav class="container mx-auto px-6 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-3">
+                <img src="aaa.png" alt="أحمد" class="w-10 h-10 rounded-full object-cover border-2 border-slate-900">
+                <div class="text-2xl font-bold">AhmedDev</div>
+            </a>
+            
+            <!-- Mobile Menu Button -->
+            <button id="menu-btn" class="md:hidden block focus:outline-none text-inherit">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+
+            <ul id="menu" class="hidden md:flex space-x-reverse space-x-8 font-medium items-center">
+                <li><a href="index.html" class="nav-link">الرئيسية</a></li>
+                <li><a href="about.html" class="nav-link active">عني</a></li>
+                <li><a href="projects.html" class="nav-link">مشاريعي</a></li>
+                <li><a href="contact.html" class="bg-indigo-600 text-white px-5 py-2 rounded-lg hover:bg-indigo-700 transition">تواصل معي</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="pt-32 pb-24">
+        <!-- Hero Section -->
+        <section class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6" data-aos="fade-left">
+                    <div class="inline-block px-4 py-1.5 rounded-full bg-indigo-50 text-indigo-600 text-sm font-bold mb-2">من أنا؟</div>
+                    <h2 class="text-5xl font-black text-slate-900 leading-tight">شغف بالبرمجة،<br><span class="text-gradient">دقة في التنفيذ.</span></h2>
+                    <p class="text-gray-600 leading-relaxed text-lg font-light">أنا مطور ويب متخصص في تحويل الأفكار المعقدة إلى واجهات مستخدم بسيطة وتفاعلية. أركز على كتابة كود نظيف وقابل للتوسع مع ضمان أفضل أداء ممكن للمتصفحات.</p>
+                    
+                    <div class="grid grid-cols-2 gap-6 pt-4">
+                        <div class="p-5 bg-white rounded-3xl shadow-sm border border-slate-100 transition-transform hover:-translate-y-1">
+                            <div class="text-3xl font-black text-indigo-600 mb-1">+1</div>
+                            <div class="text-slate-500 text-sm font-medium">سنة من الخبرة المكثفة</div>
+                        </div>
+                        <div class="p-5 bg-white rounded-3xl shadow-sm border border-slate-100 transition-transform hover:-translate-y-1">
+                            <div class="text-3xl font-black text-emerald-500 mb-1">+20</div>
+                            <div class="text-slate-500 text-sm font-medium">مشروعاً رقمياً متكاملاً</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative group" data-aos="fade-right">
+                    <div class="absolute -inset-4 bg-gradient-to-tr from-indigo-500/20 to-purple-500/20 rounded-[3rem] blur-2xl group-hover:opacity-100 transition duration-1000"></div>
+                    <div class="relative bg-[#0d1117] rounded-[2rem] shadow-2xl overflow-hidden font-mono text-sm leading-relaxed border border-white/10">
+                        <div class="bg-slate-800/40 px-6 py-4 flex gap-2 border-b border-white/5 items-center">
+                            <div class="flex gap-1.5"><div class="w-3 h-3 rounded-full bg-[#ff5f56]"></div><div class="w-3 h-3 rounded-full bg-[#ffbd2e]"></div><div class="w-3 h-3 rounded-full bg-[#27c93f]"></div></div>
+                            <div class="text-slate-400 text-xs ml-auto">about_me.js</div>
+                        </div>
+                        <div class="p-8">
+                        <p><span class="text-purple-400">class</span> <span class="text-blue-400">Developer</span> {</p>
+                        <p class="pl-4"><span class="text-purple-400">constructor</span>() {</p>
+                        <p class="pl-8"><span class="text-red-400">this</span>.<span class="text-white">name</span> = <span class="text-green-400">'Ahmed'</span>;</p>
+                        <p class="pl-8"><span class="text-red-400">this</span>.<span class="text-white">skills</span> = [<span class="text-green-400">'Fullstack'</span>, <span class="text-green-400">'UI/UX'</span>];</p>
+                        <p class="pl-8"><span class="text-red-400">this</span>.<span class="text-white">motto</span> = <span class="text-green-400">'Clean Code, Happy User'</span>;</p>
+                        <p class="pl-4">} }</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Timeline -->
+        <section class="mt-32 py-20 bg-slate-900 text-white rounded-[4rem] mx-4 md:mx-10 overflow-hidden relative">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-indigo-500/10 blur-[100px] rounded-full"></div>
+            <div class="container mx-auto px-6 relative z-10">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <h2 class="text-3xl font-black mb-4">المسيرة التعليمية والمهنية</h2>
+                    <div class="w-20 h-1.5 bg-indigo-500 mx-auto rounded-full"></div>
+                </div>
+
+                <div class="max-w-3xl mx-auto space-y-12">
+                    <div class="flex gap-6 relative" data-aos="fade-right">
+                        <div class="absolute right-[19px] top-10 bottom-[-50px] w-0.5 bg-slate-700"></div>
+                        <div class="w-10 h-10 rounded-full bg-indigo-600 flex items-center justify-center shrink-0 relative z-10 shadow-lg shadow-indigo-500/40">
+                            <i class="fas fa-briefcase text-sm"></i>
+                        </div>
+                        <div class="bg-white/5 backdrop-blur-md p-6 rounded-3xl border border-white/10 flex-1">
+                            <span class="text-indigo-400 text-xs font-bold uppercase tracking-wider">2023 - الحاضر</span>
+                            <h3 class="text-xl font-bold mt-1">مطور واجهات مستقل (Freelance)</h3>
+                            <p class="text-slate-400 text-sm mt-2 font-light leading-relaxed">العمل على مشاريع متنوعة تشمل المتاجر الإلكترونية وصفحات الهبوط الاحترافية مع التركيز على سرعة التحميل.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-6 relative" data-aos="fade-right" data-aos-delay="200">
+                        <div class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center shrink-0 relative z-10">
+                            <i class="fas fa-graduation-cap text-sm"></i>
+                        </div>
+                        <div class="bg-white/5 backdrop-blur-md p-6 rounded-3xl border border-white/10 flex-1">
+                            <span class="text-slate-400 text-xs font-bold uppercase tracking-wider">2022</span>
+                            <h3 class="text-xl font-bold mt-1">تطوير الويب المتكامل (Full-Stack)</h3>
+                            <p class="text-slate-400 text-sm mt-2 font-light leading-relaxed">إتمام دورات مكثفة في تقنيات MERN Stack وتطبيقات الويب الحديثة.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills -->
+        <section class="mt-32 py-20">
+            <div class="container mx-auto px-6 text-center">
+                <div class="mb-16" data-aos="fade-up">
+                    <h2 class="text-4xl font-black text-slate-900 mb-4">الترسانة التقنية</h2>
+                    <p class="text-slate-500">الأدوات التي أستخدمها لتحويل الخيال إلى واقع</p>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <div class="group p-8 bg-white rounded-[2.5rem] shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="w-16 h-16 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-500">
+                            <i class="fab fa-react text-3xl group-hover:rotate-12 transition-transform duration-300"></i>
+                        </div>
+                        <h3 class="font-bold text-lg text-slate-900 mb-2">Frontend</h3>
+                        <p class="text-xs text-slate-400 font-medium">React, Tailwind, Next.js</p>
+                    </div>
+
+                    <div class="group p-8 bg-white rounded-[2.5rem] shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="w-16 h-16 bg-green-50 text-green-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-500">
+                            <i class="fab fa-node-js text-3xl group-hover:rotate-12 transition-transform duration-300"></i>
+                        </div>
+                        <h3 class="font-bold text-lg text-slate-900 mb-2">Backend</h3>
+                        <p class="text-xs text-slate-400 font-medium">Node.js, Express, PHP</p>
+                    </div>
+
+                    <div class="group p-8 bg-white rounded-[2.5rem] shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100" data-aos="zoom-in" data-aos-delay="300">
+                        <div class="w-16 h-16 bg-amber-50 text-amber-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-500">
+                            <i class="fas fa-database text-3xl group-hover:rotate-12 transition-transform duration-300"></i>
+                        </div>
+                        <h3 class="font-bold text-lg text-slate-900 mb-2">Databases</h3>
+                        <p class="text-xs text-slate-400 font-medium">MongoDB, MySQL, Firebase</p>
+                    </div>
+
+                    <div class="group p-8 bg-white rounded-[2.5rem] shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100" data-aos="zoom-in" data-aos-delay="400">
+                        <div class="w-16 h-16 bg-purple-50 text-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-500">
+                            <i class="fas fa-tools text-3xl group-hover:rotate-12 transition-transform duration-300"></i>
+                        </div>
+                        <h3 class="font-bold text-lg text-slate-900 mb-2">Tools</h3>
+                        <p class="text-xs text-slate-400 font-medium">Git, Figma, Docker</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-12 bg-gray-900 text-white text-center">
+        <p>© 2026 AhmedDev.com | جميع الحقوق محفوظة</p>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="scroll-to-top" class="fixed bottom-8 right-8 z-50 w-14 h-14 flex items-center justify-center bg-slate-900 text-white rounded-full shadow-2xl opacity-0 translate-y-10 pointer-events-none transition-all duration-500">
+        <svg class="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 100 100">
+            <circle class="text-slate-700/30" stroke-width="6" stroke="currentColor" fill="transparent" r="42" cx="50" cy="50" />
+            <circle id="scroll-progress-circle" class="text-indigo-500" stroke-width="6" stroke-dasharray="264" stroke-dashoffset="264" stroke-linecap="round" stroke="currentColor" fill="transparent" r="42" cx="50" cy="50" />
+        </svg>
+        <svg class="w-6 h-6 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18"></path></svg>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>
