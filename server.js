@@ -8,6 +8,13 @@ const path = require('path');
 require('dotenv').config(); // تحميل المتغيرات من ملف .env
 
 const app = express();
+
+// التحقق من وجود المتغيرات الأساسية عند التشغيل
+const REQUIRED_ENV = ['GNEWS_API_KEY', 'EMAIL_USER', 'EMAIL_PASS'];
+REQUIRED_ENV.forEach(key => {
+    if (!process.env[key]) console.warn(`⚠️ Warning: ${key} is missing in .env file`);
+});
+
 app.use(compression()); // ضغط الردود لتقليل حجم البيانات المنقولة
 app.use(cors()); // السماح لمتصفحك بالاتصال بالخادم
 app.use(express.json()); // للسماح للخادم بفهم بيانات JSON المرسلة إليه
@@ -102,6 +109,15 @@ app.get('/api/projects', (req, res) => {
     });
 });
 
+// إعداد مرسل البريد مرة واحدة خارج المسار لتحسين الأداء
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
+    }
+});
+
 // --- مسار استقبال رسائل التواصل (Contact API) ---
 app.post('/api/contact', async (req, res) => {
     const { name, email, phone, message } = req.body;
@@ -109,15 +125,6 @@ app.post('/api/contact', async (req, res) => {
     if (!name || !email || !message) {
         return res.status(400).json({ success: false, message: 'يرجى ملء جميع الحقول المطلوبة.' });
     }
-
-    // إعداد مرسل البريد باستخدام البيانات التي ستحصل عليها من جوجل
-    const transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-            user: process.env.EMAIL_USER, // بريدك الجيميل
-            pass: process.env.EMAIL_PASS  // كود الـ 16 حرفاً الذي ستنشئه الآن
-        }
-    });
 
     const mailOptions = {
         from: `"${name}" <${process.env.EMAIL_USER}>`,
