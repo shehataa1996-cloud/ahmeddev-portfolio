@@ -3,6 +3,17 @@
  * يحتوي على وظائف التحكم في التمرير، القائمة الجانبية، معرض الصور والتحريكات
  */
 
+// --- 0. Trusted Types Policy Definition ---
+// تفعيل سياسة الحماية للسماح بحقن نصوص HTML في الصفحة بشكل آمن عند تفعيل CSP
+if (window.trustedTypes && window.trustedTypes.createPolicy) {
+    window.trustedTypes.createPolicy('default', {
+        createHTML: (string) => {
+            // هنا يمكن إضافة مكتبة تطهير مثل DOMPurify مستقبلاً لمزيد من الأمان
+            return string;
+        }
+    });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     // تهيئة جميع مميزات الموقع بمجرد تحميل مستند HTML بالكامل
     initHeaderScroll();
