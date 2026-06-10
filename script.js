@@ -292,9 +292,8 @@ async function initTechNews() {
     const viewAllBtn = document.getElementById('view-all-news');
     if (!newsGrid || !viewAllBtn) return;
 
-    // في المواقع الاستاتيكية، نقوم بطلب الـ API مباشرة
-    // تحذير: هذا سيكشف مفتاح الـ API الخاص بك في المتصفح
-    const url = 'https://gnews.io/api/v4/top-headlines?category=technology&lang=ar&apikey=YOUR_GNEWS_API_KEY';
+    // نقوم بطلب الأخبار من السيرفر الخاص بنا (Proxy) لحل مشكلة الحظر وحماية مفتاح الـ API
+    const url = '/api/news';
 
     try {
         const response = await fetch(url);

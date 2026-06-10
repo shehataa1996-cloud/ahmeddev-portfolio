@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ahmeddev.com/sitemap.xml
+Sitemap: https://shehataa1996-cloud.github.io/ahmeddev-portfolio/sitemap.xml
