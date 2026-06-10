@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>تواصل معي - اطلب مشروعك القادم الآن | Ahmed El-Fayed</title>
     <meta name="description" content="هل لديك فكرة مشروع؟ تواصل معي الآن لمناقشة التفاصيل وتحويل رؤيتك إلى واقع رقمي ملموس.">
-    <link rel="canonical" href="https://ahmeddev.com/contact.html">
+    <link rel="canonical" href="https://shehataa1996-cloud.github.io/ahmeddev-portfolio/contact.html">
 
     <link rel="shortcut icon" type="image/png" href="aaa.png">
     <link rel="apple-touch-icon" href="aaa.png">
@@ -57,13 +57,13 @@
                         <p class="text-slate-400 text-sm leading-relaxed mb-8">هل لديك فكرة مشروع أو ترغب في استشارة تقنية؟ أنا هنا لمساعدتك في تحويل رؤيتك إلى واقع رقمي.</p>
                         
                         <div class="space-y-6">
-                            <a href="mailto:info@example.com" class="flex items-start gap-4 group cursor-pointer transition-all contact-info-item">
+                            <a href="mailto:ahmdgiu7@gmail.com" class="flex items-start gap-4 group cursor-pointer transition-all contact-info-item">
                                 <div class="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center group-hover:bg-indigo-600 transition-colors">
                                     <svg class="w-6 h-6 text-indigo-400 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                                 </div>
                                 <div>
                                     <p class="text-xs text-slate-500 mb-1">راسلني عبر البريد</p>
-                                    <p class="font-bold text-sm">info@example.com</p>
+                                    <p class="font-bold text-sm">ahmdgiu7@gmail.com</p>
                                 </div>
                             </a>
 
@@ -82,7 +82,7 @@
 
                 <!-- نموذج المراسلة (Light Side) -->
                 <div class="md:w-3/5 p-8 md:p-12">
-                    <form id="contact-form" action="https://formspree.io/f/xnjwgqzz" method="POST" class="space-y-6 relative">
+                    <form id="contact-form" action="/api/contact" method="POST" class="space-y-6 relative">
                         <!-- Feedback Message Area -->
                         <div id="form-feedback" class="hidden p-4 rounded-xl text-sm font-medium mb-4 animate-fade-in-up"></div>
 
@@ -100,6 +100,13 @@
                                     <i class="fas fa-envelope absolute right-4 top-1/2 -translate-y-1/2 text-slate-300 group-focus-within:text-indigo-500 transition-colors"></i>
                                     <input type="email" name="email" required class="w-full bg-slate-50 border-2 border-transparent rounded-xl py-4 pr-12 pl-4 focus:bg-white focus:border-indigo-500 outline-none transition-all placeholder:text-slate-300" placeholder="name@example.com">
                                 </div>
+                            </div>
+                        </div>
+                        <div class="relative">
+                            <label class="block text-xs font-bold text-slate-500 mb-2 uppercase tracking-wider">رقم الهاتف (اختياري)</label>
+                            <div class="relative group">
+                                <i class="fas fa-phone absolute right-4 top-1/2 -translate-y-1/2 text-slate-300 group-focus-within:text-indigo-500 transition-colors"></i>
+                                <input type="tel" name="phone" class="w-full bg-slate-50 border-2 border-transparent rounded-xl py-4 pr-12 pl-4 focus:bg-white focus:border-indigo-500 outline-none transition-all placeholder:text-slate-300" placeholder="+20 123 456 7890">
                             </div>
                         </div>
                         <div>
@@ -135,6 +142,7 @@
         <svg class="w-6 h-6 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18"></path></svg>
     </button>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.6/purify.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
     <script src="script.js"></script>
 </body>

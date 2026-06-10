@@ -8,8 +8,7 @@
 if (window.trustedTypes && window.trustedTypes.createPolicy) {
     window.trustedTypes.createPolicy('default', {
         createHTML: (string) => {
-            // هنا يمكن إضافة مكتبة تطهير مثل DOMPurify مستقبلاً لمزيد من الأمان
-            return string;
+            return (typeof DOMPurify !== 'undefined') ? DOMPurify.sanitize(string, { RETURN_TRUSTED_TYPE: true }) : string;
         }
     });
 }
@@ -19,12 +18,9 @@ document.addEventListener('DOMContentLoaded', () => {
     initHeaderScroll();
     initMobileMenu();
     initLightbox();
-    // تم استبدال initRevealAnimations بمكتبة AOS لتحسين الأداء والمرونة
-    // initRevealAnimations(); 
     
-    // تفعيل التحميل الديناميكي للبيانات من السيرفر
-    initProjectsPage();
-    initHomeProjectsPreview();
+    // توحيد معالجة المشاريع
+    initProjectsData();
     initBlogSection();
 
     initTestimonialsCarousel();
@@ -67,15 +63,11 @@ function initHeaderScroll() {
     // إنشاء المراقب
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            // إذا كان العنصر الوهمي لا يتقاطع مع الرؤية (أي خرج من أعلى الشاشة)
-            // فهذا يعني أن المستخدم قام بالتمرير لأكثر من 50 بكسل
-            if (!entry.isIntersecting) {
-                header.classList.add('bg-white/70', 'backdrop-blur-xl', 'shadow-2xl', 'py-2', 'text-slate-900', 'border-b', 'border-white/20');
-                header.classList.remove('py-4', 'text-white');
-            } else {
-                header.classList.remove('bg-white/70', 'backdrop-blur-xl', 'shadow-2xl', 'py-2', 'text-slate-900', 'border-b', 'border-white/20');
-                header.classList.add('py-4', 'text-white');
-            }
+            const isScrolled = !entry.isIntersecting;
+            header.classList.toggle('bg-white/70', isScrolled);
+            header.classList.toggle('backdrop-blur-xl', isScrolled);
+            header.classList.toggle('text-slate-900', isScrolled);
+            header.classList.toggle('text-white', !isScrolled);
         });
     }, { threshold: 0 });
 
@@ -92,20 +84,15 @@ function initMobileMenu() {
     
     if (!menuBtn || !menu) return;
 
-    // تهيئة سمات ARIA للحالة الأولية (القائمة مغلقة افتراضيًا)
     menuBtn.setAttribute('aria-expanded', 'false');
     menu.setAttribute('aria-hidden', 'true');
-    // ربط الزر بالقائمة التي يتحكم فيها لأغراض إمكانية الوصول
     menuBtn.setAttribute('aria-controls', menu.id);
     
     menuBtn.addEventListener('click', () => {
         const classes = ['hidden', 'flex', 'flex-col', 'absolute', 'top-16', 'left-0', 'w-full', 'bg-white', 'p-6', 'text-slate-900'];
         classes.forEach(cls => menu.classList.toggle(cls));
-
-        // بعد تبديل الفئات، نتحقق من الحالة الجديدة للقائمة
-        const isNowOpen = !menu.classList.contains('hidden');
         
-        // تحديث سمات ARIA بناءً على الحالة الجديدة
+        const isNowOpen = !menu.classList.contains('hidden');
         menuBtn.setAttribute('aria-expanded', isNowOpen ? 'true' : 'false');
         menu.setAttribute('aria-hidden', isNowOpen ? 'false' : 'true');
     });
@@ -139,11 +126,9 @@ function initLightbox() {
     });
 
     const hideLightbox = () => {
-        // إضافة تأثير التصغير قبل إغلاق النافذة
         lightboxImg.classList.add('scale-95');
         setTimeout(() => {
             lightbox.classList.replace('flex', 'hidden');
-            // إعادة تمكين التمرير في الصفحة
             document.body.style.overflow = '';
         }, 200);
     };
@@ -169,7 +154,6 @@ function initTiltEffect() {
             const centerX = rect.width / 2;
             const centerY = rect.height / 2;
             
-            // حساب زوايا الدوران (قسمة الفرق على 15 للتحكم في شدة الإمالة)
             const rotateX = (centerY - y) / 15;
             const rotateY = (x - centerX) / 15;
             
@@ -178,7 +162,6 @@ function initTiltEffect() {
         });
         
         card.addEventListener('mouseleave', () => {
-            // إعادة البطاقة لوضعها الطبيعي عند خروج الماوس
             card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
             card.classList.remove('shadow-indigo-500/20');
         });
@@ -223,7 +206,6 @@ function initContactForm() {
     const btnText = btn.querySelector('.btn-text');
     const spinner = btn.querySelector('.loading-spinner');
 
-    // دالة مساعدة للتحقق من تنسيق البريد الإلكتروني
     const validateEmail = (email) => {
         return String(email)
             .toLowerCase()
@@ -232,45 +214,36 @@ function initContactForm() {
 
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
-        
-        // التحقق من أن المستخدم قام بتغيير المعرّف الافتراضي
-        if (form.action.includes('yourformid')) {
-            showFeedback("خطأ في الإعداد: يرجى استبدال 'yourformid' بمعرّف Formspree الخاص بك.", "error");
-            return;
-        }
 
         const emailInput = form.querySelector('input[name="email"]');
 
-        // التحقق من صحة البريد الإلكتروني قبل الإرسال
         if (emailInput && !validateEmail(emailInput.value)) {
             showFeedback("يرجى إدخال بريد إلكتروني صحيح.", "error");
             return;
         }
 
-        // تفعيل حالة التحميل (Loading State)
         btn.disabled = true;
         btnText.classList.add('opacity-50');
         spinner.classList.remove('hidden');
         feedback.classList.add('hidden');
 
         try {
-            const formData = new FormData(form);
+            const formData = Object.fromEntries(new FormData(form));
             const response = await fetch(form.action, {
                 method: 'POST',
-                body: formData,
-                headers: { 'Accept': 'application/json' }
+                body: JSON.stringify(formData),
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json' 
+                }
             });
 
-            if (response.ok) {
-                showFeedback("تم إرسال رسالتك بنجاح! سأتواصل معك قريباً.", "success");
+            const result = await response.json();
+            if (response.ok && result.success) {
+                showFeedback(result.message, "success");
                 form.reset();
             } else {
-                const data = await response.json();
-                if (data.errors) {
-                    showFeedback(data.errors.map(error => error.message).join(", "), "error");
-                } else {
-                    throw new Error();
-                }
+                showFeedback(result.message || "حدث خطأ غير متوقع.", "error");
             }
         } catch (error) {
             showFeedback("عذراً، حدث خطأ أثناء الإرسال. يرجى المحاولة مرة أخرى.", "error");
@@ -281,7 +254,6 @@ function initContactForm() {
         }
     });
 
-    // دالة موحدة لإظهار رسائل التغذية الراجعة
     function showFeedback(message, type) {
         feedback.textContent = message;
         feedback.className = `p-4 rounded-xl text-sm font-medium mb-4 animate-fade-in-up block ${
@@ -357,12 +329,7 @@ function renderNews(articles) {
 
     newsGrid.innerHTML = '';
 
-    // إظهار أو إخفاء زر "عرض الكل" بناءً على حالة الفلترة
-    if (activeSourceFilter) {
-        viewAllBtn.classList.remove('hidden');
-    } else {
-        viewAllBtn.classList.add('hidden');
-    }
+    viewAllBtn.classList.toggle('hidden', !activeSourceFilter);
 
     articles.slice(0, 6).forEach((article, index) => {
         const theme = getSourceTheme(article.source.name);
@@ -411,27 +378,23 @@ function initScrollToTop() {
     window.addEventListener('scroll', () => {
         if (!ticking) {
             window.requestAnimationFrame(() => {
-                // حساب المسافة الكلية القابلة للتمرير ونسبة التقدم الحالية
                 const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
                 const scrollPercent = totalHeight > 0 ? (window.scrollY / totalHeight) : 0;
                 const offset = circumference - (scrollPercent * circumference);
                 
-                // تحديث خاصية strokeDashoffset لرسم دائرة التقدم
                 if (progressCircle) progressCircle.style.strokeDashoffset = offset;
 
-                // إظهار الزر عند التمرير لأكثر من 400 بكسل
-                if (window.scrollY > 400) {
-                    scrollTopBtn.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none');
-                } else if (scrollTopBtn.classList.contains('opacity-0') === false) { // Only add if not already hidden
-                    scrollTopBtn.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none');
-                }
+                const shouldShow = window.scrollY > 400;
+                scrollTopBtn.classList.toggle('opacity-0', !shouldShow);
+                scrollTopBtn.classList.toggle('translate-y-10', !shouldShow);
+                scrollTopBtn.classList.toggle('pointer-events-none', !shouldShow);
+
                 ticking = false;
             });
             ticking = true;
         }
     }, { passive: true });
 
-    // التمرير السلس لأعلى الصفحة عند الضغط على الزر
     scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 }
 
@@ -443,17 +406,14 @@ function initWhatsappTooltip() {
     const whatsappBtn = document.querySelector('.whatsapp-glow');
     if (!whatsappBtn) return;
 
-    // تعريف ملف الصوت (صوت تنبيه خفيف)
     const notificationSound = new Audio('https://assets.mixkit.co/active_storage/sfx/2358/2358-preview.mp3');
-    notificationSound.volume = 0.3; // خفض مستوى الصوت ليكون "خفيفاً" وغير مزعج
+    notificationSound.volume = 0.3;
 
     let tooltipTimeout;
 
     const triggerTooltipSound = () => {
         notificationSound.currentTime = 0; // إعادة الصوت للبداية لضمان التشغيل الفوري عند التكرار
-        notificationSound.play().catch(() => {
-            // تجاهل الخطأ إذا منع المتصفح تشغيل الصوت قبل تفاعل المستخدم مع الصفحة
-        });
+        notificationSound.play().catch(() => {});
     };
 
     whatsappBtn.addEventListener('click', (e) => {
@@ -462,9 +422,7 @@ function initWhatsappTooltip() {
             whatsappBtn.classList.add('show-tooltip');
             triggerTooltipSound();
             
-            // مسح أي مؤقت سابق لضمان عمل العداد من جديد في حال النقر المتكرر
             clearTimeout(tooltipTimeout);
-            
             tooltipTimeout = setTimeout(() => {
                 whatsappBtn.classList.remove('show-tooltip');
             }, 2000); // 2000 مللي ثانية = ثانيتين
@@ -486,7 +444,6 @@ function initBlogSection() {
     const blogGrid = document.getElementById('blog-grid');
     if (!blogGrid) return;
 
-    // جلب البيانات من السيرفر
     fetch('articles.json')
         .then(response => response.json())
         .then(myArticles => {
@@ -534,68 +491,43 @@ function renderBlogCards(myArticles, blogGrid) {
 }
 
 /**
- * وظيفة عرض المشاريع ديناميكياً في صفحة المشاريع
+ * توحيد جلب بيانات المشاريع وتحسين الأداء
  */
-function initProjectsPage() {
-    const grid = document.getElementById('projects-grid');
-    if (!grid) return;
+function initProjectsData() {
+    const projectsGrid = document.getElementById('projects-grid');
+    const homeGrid = document.getElementById('home-projects-grid');
+    if (!projectsGrid && !homeGrid) return;
 
-    fetch('projects.json')
-        .then(res => res.json())
-        .then(projects => {
-            grid.innerHTML = projects.map((p, index) => `
-                <div class="project-card tilt-card relative min-h-[400px] rounded-3xl overflow-hidden shadow-2xl group cursor-zoom-in lightbox-trigger border border-white/10 bg-slate-900" data-aos="fade-up" data-aos-delay="${(index % 3 + 1) * 100}">
-                    <picture class="absolute inset-0 w-full h-full">
-                        <img src="${p.image}" alt="${p.title}" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity duration-700" loading="lazy">
-                    </picture>
-                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent flex flex-col justify-end p-8">
-                        <div class="flex justify-between items-start mb-3">
-                            <h3 class="font-bold text-2xl text-white">${p.title}</h3>
-                            <span class="bg-indigo-600 text-white text-[10px] px-3 py-1 rounded-full uppercase tracking-widest font-bold shadow-lg">${p.category}</span>
-                        </div>
-                        <p class="text-gray-300 text-sm mb-6 leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500">${p.excerpt}</p>
-                        <a href="${p.link}" target="_blank" class="inline-block w-full text-center bg-white/10 backdrop-blur-md border border-white/20 text-white py-3 rounded-xl font-bold hover:bg-white hover:text-indigo-900 transition-all duration-300">معاينة المشروع مباشرة</a>
-                    </div>
-                </div>
-            `).join('');
-            
-            // إعادة تفعيل التأثيرات البصرية بعد تحميل العناصر الجديدة
-            if (window.initTiltEffect) initTiltEffect();
-            if (window.initLightbox) initLightbox();
-            if (window.AOS) AOS.refresh();
-        })
-        .catch(err => console.error('Error fetching projects:', err));
+    fetch('projects.json').then(res => res.json()).then(projects => {
+        if (projectsGrid) {
+            projectsGrid.innerHTML = projects.map((p, i) => renderProjectCard(p, i, true)).join('');
+            initLightbox();
+        }
+        if (homeGrid) {
+            homeGrid.innerHTML = projects.slice(0, 3).map((p, i) => renderProjectCard(p, i, false)).join('');
+        }
+        initTiltEffect();
+        if (window.AOS) AOS.refresh();
+    }).catch(console.error);
 }
 
-/**
- * وظيفة عرض معاينة لآخر المشاريع في الصفحة الرئيسية
- */
-function initHomeProjectsPreview() {
-    const grid = document.getElementById('home-projects-grid');
-    if (!grid) return;
-
-    fetch('projects.json')
-        .then(res => res.json())
-        .then(projects => {
-            // نأخذ أول 3 مشاريع فقط للعرض في الصفحة الرئيسية
-            const latestProjects = projects.slice(0, 3);
-            
-            grid.innerHTML = latestProjects.map((p, index) => `
-                <div class="project-card tilt-card relative min-h-[400px] rounded-3xl overflow-hidden shadow-xl group border border-slate-100 bg-slate-900" data-aos="fade-up" data-aos-delay="${(index + 1) * 100}">
-                    <img src="${p.image}" alt="${p.title}" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity duration-700">
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent flex flex-col justify-end p-8">
-                        <div class="flex justify-between items-start mb-3">
-                            <h3 class="font-bold text-2xl text-white">${p.title}</h3>
-                            <span class="bg-indigo-600 text-white text-[10px] px-3 py-1 rounded-full uppercase font-bold">${p.category}</span>
-                        </div>
-                        <p class="text-gray-300 text-sm mb-6 leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 line-clamp-3">${p.excerpt}</p>
-                        <a href="${p.link}" target="_blank" class="inline-block w-full text-center bg-white/10 backdrop-blur-md border border-white/20 text-white py-3 rounded-xl font-bold hover:bg-white hover:text-indigo-900 transition-all">معاينة المشروع</a>
-                    </div>
+function renderProjectCard(p, index, isFullPage) {
+    const delay = (index % 3 + 1) * 100;
+    return `
+        <div class="project-card tilt-card relative min-h-[400px] rounded-3xl overflow-hidden shadow-2xl group ${isFullPage ? 'cursor-zoom-in lightbox-trigger' : ''} border border-white/10 bg-slate-900" data-aos="fade-up" data-aos-delay="${delay}">
+            <picture class="absolute inset-0 w-full h-full">
+                <img src="${p.image}" alt="${p.title}" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity duration-700" loading="lazy">
+            </picture>
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent flex flex-col justify-end p-8">
+                <div class="flex justify-between items-start mb-3">
+                    <h3 class="font-bold text-2xl text-white">${p.title}</h3>
+                    <span class="bg-indigo-600 text-white text-[10px] px-3 py-1 rounded-full uppercase tracking-widest font-bold shadow-lg">${p.category}</span>
                 </div>
-            `).join('');
-            
-            if (window.initTiltEffect) initTiltEffect();
-            if (window.AOS) AOS.refresh();
-        })
-        .catch(err => console.error('Error loading projects preview:', err));
+                <p class="text-gray-300 text-sm mb-6 leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 line-clamp-3">${p.excerpt}</p>
+                <a href="${p.link}" target="_blank" class="inline-block w-full text-center bg-white/10 backdrop-blur-md border border-white/20 text-white py-3 rounded-xl font-bold hover:bg-white hover:text-indigo-900 transition-all duration-300">
+                    ${isFullPage ? 'معاينة المشروع مباشرة' : 'معاينة المشروع'}
+                </a>
+            </div>
+        </div>
+    `;
 }
