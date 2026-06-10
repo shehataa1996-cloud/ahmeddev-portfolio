@@ -156,7 +156,8 @@ body {
 
 /* تحسين مظهر التدرج اللوني للنصوص */
 .text-gradient {
-    background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+    /* استخدام ألوان أكثر تشبعاً لزيادة التباين */
+    background: linear-gradient(135deg, #4f46e5 0%, #9333ea 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -270,7 +271,7 @@ input, textarea {
     display: flex;
     align-items: center;
     gap: 5px;
-    color: #94a3b8;
+    color: #64748b; /* Slate-500 بدلاً من Slate-400 */
     font-size: 12px;
 }
 

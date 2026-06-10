@@ -19,6 +19,10 @@
    ```env
    GNEWS_API_KEY=your_key_here
    ```
+4. لتحديث خريطة الموقع تلقائياً بناءً على تعديلات الملفات:
+   ```bash
+   node generate-sitemap.js
+   ```
 4. ابدأ السيرفر:
    ```bash
    npm start
