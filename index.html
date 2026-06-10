@@ -8,6 +8,12 @@
     <meta name="keywords" content="مطور ويب, برمجة مواقع, تصميم مواقع, AhmedDev, مطور ويب مصري, React, Tailwind CSS">
     <link rel="canonical" href="https://shehataa1996-cloud.github.io/ahmeddev-portfolio/">
 
+    <!-- Preconnect to improve FCP -->
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://unpkg.com">
+
     <!-- أيقونة الموقع التي تظهر في نتائج البحث -->
     <link rel="icon" type="image/png" href="https://shehataa1996-cloud.github.io/ahmeddev-portfolio/aaa.png">
     <link rel="apple-touch-icon" href="https://shehataa1996-cloud.github.io/ahmeddev-portfolio/aaa.png">
@@ -29,11 +35,9 @@
     <meta property="twitter:description" content="أبتكر تجارب رقمية استثنائية عبر حلول برمجية متطورة. استعرض مشاريعي الآن.">
     <meta property="twitter:image" content="https://shehataa1996-cloud.github.io/ahmeddev-portfolio/aaa.png">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="style.css" media="all">
 
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -63,9 +67,9 @@
       }
     }
     </script>
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" media="print" onload="this.media='all'" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
 </head>
 <body class="bg-slate-50 text-gray-900 overflow-x-hidden selection:bg-indigo-500 selection:text-white">
 
@@ -161,7 +165,7 @@
                             
                             <!-- Browser Body (The Image) -->
                             <picture>
-                                <img src="aaa.png" alt="أحمد الفايد مطور ويب خبير في البرمجة والتصميم" class="w-full h-80 md:h-[420px] object-cover transition-transform duration-700 group-hover:scale-105" width="450" height="450" fetchpriority="high" loading="eager">
+                                <img src="aaa.png" alt="أحمد الفايد مطور ويب خبير في البرمجة والتصميم" class="w-full h-80 md:h-[420px] object-cover transition-transform duration-700 group-hover:scale-105" width="450" height="450" fetchpriority="high" loading="eager" decoding="async">
                             </picture>
                         </div>
                     </div>
@@ -396,7 +400,7 @@
         </div>
     </button>
 
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+    <script src="script.js" defer></script>
 </body>
 </html>
