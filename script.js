@@ -229,7 +229,7 @@ function initContactForm() {
 
         try {
             const formData = Object.fromEntries(new FormData(form));
-            const response = await fetch(form.action, {
+            const response = await fetch(form.action || '/api/contact', {
                 method: 'POST',
                 body: JSON.stringify(formData),
                 headers: { 
@@ -238,7 +238,14 @@ function initContactForm() {
                 }
             });
 
-            const result = await response.json();
+            let result;
+            const contentType = response.headers.get("content-type");
+            if (contentType && contentType.indexOf("application/json") !== -1) {
+                result = await response.json();
+            } else {
+                throw new Error("السيرفر أرسل رداً غير متوقع.");
+            }
+
             if (response.ok && result.success) {
                 showFeedback(result.message, "success");
                 form.reset();
@@ -246,6 +253,7 @@ function initContactForm() {
                 showFeedback(result.message || "حدث خطأ غير متوقع.", "error");
             }
         } catch (error) {
+            console.error('Submission Error:', error);
             showFeedback("عذراً، حدث خطأ أثناء الإرسال. يرجى المحاولة مرة أخرى.", "error");
         } finally {
             btn.disabled = false;
@@ -406,6 +414,7 @@ function initWhatsappTooltip() {
     const whatsappBtn = document.querySelector('.whatsapp-glow');
     if (!whatsappBtn) return;
 
+    // يمكنك تغيير الرابط أدناه إلى رابط ملف صوتي جديد أو مسار ملف محلي مثل 'sounds/notification.mp3'
     const notificationSound = new Audio('https://assets.mixkit.co/active_storage/sfx/2358/2358-preview.mp3');
     notificationSound.volume = 0.3;
 
@@ -504,7 +513,7 @@ function initProjectsData() {
             initLightbox();
         }
         if (homeGrid) {
-            homeGrid.innerHTML = projects.slice(0, 3).map((p, i) => renderProjectCard(p, i, false)).join('');
+            homeGrid.innerHTML = projects.slice(0, 4).map((p, i) => renderProjectCard(p, i, false)).join('');
         }
         initTiltEffect();
         if (window.AOS) AOS.refresh();
@@ -513,15 +522,16 @@ function initProjectsData() {
 
 function renderProjectCard(p, index, isFullPage) {
     const delay = (index % 3 + 1) * 100;
+    const categoryColor = p.category === 'Innovation' ? 'bg-purple-600' : (p.category === 'E-commerce' ? 'bg-emerald-600' : 'bg-indigo-600');
     return `
         <div class="project-card tilt-card relative min-h-[400px] rounded-3xl overflow-hidden shadow-2xl group ${isFullPage ? 'cursor-zoom-in lightbox-trigger' : ''} border border-white/10 bg-slate-900" data-aos="fade-up" data-aos-delay="${delay}">
             <picture class="absolute inset-0 w-full h-full">
                 <img src="${p.image}" alt="${p.title}" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity duration-700" loading="lazy">
             </picture>
-            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent flex flex-col justify-end p-8">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent flex flex-col justify-end p-8">
                 <div class="flex justify-between items-start mb-3">
                     <h3 class="font-bold text-2xl text-white">${p.title}</h3>
-                    <span class="bg-indigo-600 text-white text-[10px] px-3 py-1 rounded-full uppercase tracking-widest font-bold shadow-lg">${p.category}</span>
+                    <span class="${categoryColor} text-white text-[10px] px-3 py-1 rounded-full uppercase tracking-widest font-bold shadow-lg">${p.category}</span>
                 </div>
                 <p class="text-gray-300 text-sm mb-6 leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 line-clamp-3">${p.excerpt}</p>
                 <a href="${p.link}" target="_blank" class="inline-block w-full text-center bg-white/10 backdrop-blur-md border border-white/20 text-white py-3 rounded-xl font-bold hover:bg-white hover:text-indigo-900 transition-all duration-300">

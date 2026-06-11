@@ -1,3 +1,5 @@
 User-agent: *
-Disallow:
+Allow: /
+Disallow: /api/
+
 Sitemap: https://shehataa1996-cloud.github.io/ahmeddev-portfolio/sitemap.xml

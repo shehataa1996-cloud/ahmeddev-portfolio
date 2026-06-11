@@ -14,5 +14,21 @@
     "link": "https://nexorastudiodevv-ctrl.github.io/-Nexora-Studio/",
     "image": "0774.jpg",
     "id": "2"
+  },
+  {
+    "title": "Moda Store",
+    "excerpt": "متجر إلكتروني متكامل لعرض وبيع الملابس، يتميز بتصميم عصري ومتجاوب بالكامل مع كافة الشاشات، مع التركيز على تجربة تسوق مريحة.",
+    "category": "E-commerce",
+    "link": "https://nexorastudiodevv-ctrl.github.io/-moda-store-website/",
+    "image": "moda.jpg",
+    "id": "3"
+  },
+  {
+    "title": "GoldHub",
+    "excerpt": "منصة رقمية متطورة لتتبع أسعار الذهب والعملات لحظة بلحظة، توفر واجهة مستخدم دقيقة وتحليلات مباشرة للسوق للمستثمرين.",
+    "category": "Web App",
+    "link": "https://nexorastudiodevv-ctrl.github.io/GoldHub/",
+    "image": "goldhub.jpg",
+    "id": "4"
   }
 ]

@@ -11,9 +11,15 @@ const app = express();
 
 // التحقق من وجود المتغيرات الأساسية عند التشغيل
 const REQUIRED_ENV = ['GNEWS_API_KEY', 'EMAIL_USER', 'EMAIL_PASS'];
+const missingEnv = [];
 REQUIRED_ENV.forEach(key => {
-    if (!process.env[key]) console.warn(`⚠️ Warning: ${key} is missing in .env file`);
+    if (!process.env[key]) missingEnv.push(key);
 });
+
+if (missingEnv.length > 0) {
+    console.error(`❌ Error: Missing required environment variables: ${missingEnv.join(', ')}`);
+    process.exit(1); // إيقاف السيرفر فوراً لأن التطبيق لن يعمل بشكل صحيح بدونها
+}
 
 app.use(compression()); // ضغط الردود لتقليل حجم البيانات المنقولة
 app.use(cors()); // السماح لمتصفحك بالاتصال بالخادم
@@ -118,12 +124,21 @@ const transporter = nodemailer.createTransport({
     }
 });
 
+// التحقق من صحة إعدادات البريد الإلكتروني عند بدء التشغيل لضمان عمل المفتاح
+transporter.verify((error, success) => {
+    if (error) {
+        console.error('❌ Nodemailer configuration error:', error.message);
+    } else {
+        console.log('✅ Server is ready to send emails using Gmail App Password');
+    }
+});
+
 // --- مسار استقبال رسائل التواصل (Contact API) ---
 app.post('/api/contact', async (req, res) => {
     const { name, email, phone, message } = req.body;
 
-    if (!name || !email || !message) {
-        return res.status(400).json({ success: false, message: 'يرجى ملء جميع الحقول المطلوبة.' });
+    if (!name || !email || !message || message.trim() === "") {
+        return res.status(400).json({ success: false, message: 'يرجى كتابة رسالة أو تفاصيل المشروع.' });
     }
 
     const mailOptions = {
@@ -148,8 +163,8 @@ app.post('/api/contact', async (req, res) => {
         await transporter.sendMail(mailOptions);
         res.json({ success: true, message: 'تم إرسال رسالتك بنجاح! سأتواصل معك قريباً.' });
     } catch (error) {
-        console.error('Nodemailer Error:', error);
-        res.status(500).json({ success: false, message: 'عذراً، حدث خطأ في السيرفر أثناء إرسال الرسالة.' });
+        console.error('Detailed Nodemailer Error:', error.message);
+        res.status(500).json({ success: false, message: `فشل إرسال البريد: ${error.code || 'خطأ في السيرفر'}` });
     }
 });
 
